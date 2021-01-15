@@ -7,7 +7,7 @@ const COLOUR = [RGB(1,0,0),RGB(0,0.5,0),RGB(0,0,1)]
 # 0= Rock, 1= Paper, 2= Scissors... n beats n-1, n loses to n+1.
 
 # if true, only save the last 10 images after gen 250. Only 6 are needed to make a gif.
-const MAKE_IMAGES_FOR_GIF = true
+const MAKE_IMAGES_FOR_GIF = false #true
 # true -> use Von N neighbourhood, 4 neighbours. false -> Moore neighborhood, 8 neighbours.
 const FOUR_NABES = false 
 
