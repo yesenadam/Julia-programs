@@ -21,6 +21,22 @@ or a GIF from 6 images
 
     $ ffmpeg -f image2 -r 50 -loop 0 -i RPS/RPS%d.png RPS.gif
  
+### Sample GIFs
+
+View these images full screen for the full effect.
+
+#### 30fps, cell size 3
+
+![gif](https://github.com/yesenadam/Julia-programs/raw/main/images/RPS-RGB-30fps-size3.gif)
+
+#### 50fps, cell size 3
+
+![gif](https://github.com/yesenadam/Julia-programs/raw/main/images/RPS-RGB-50fps-size3.gif)
+
+#### 50 fps, size 2
+
+![gif](https://github.com/yesenadam/Julia-programs/raw/main/images/RPS-RGB-size2-50fps.gif)
+
 ### Notes
 
 I think a `CELL_SIZE`>1 works better.
@@ -36,5 +52,4 @@ If you look right, it seems you can see waves travelling across the entire scree
 The illusion is produced with `FOUR_NABES = false`, which uses a cell's [8 neighbours](https://en.wikipedia.org/wiki/Moore_neighborhood). With `FOUR_NABES = true`, using the [von Neumann neighbourhood](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood), square spirals quickly appear which take over the screen - not so interesting.
 
 Q. What changes of colours, cell size, image rate, make the illusion stronger?
-
 
