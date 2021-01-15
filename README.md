@@ -11,7 +11,7 @@ I found that within about 250 generations, a 6-generation repeating loop emerged
 
     $ julia RocPapSci.jl
     
-With `MAKE_IMAGES_FOR_GIF = false`, `IMAGES` images are save in a folder `RPS`. With `MAKE_IMAGES_FOR_GIF = true`, only the last 6 images are saved.
+With `MAKE_IMAGES_FOR_GIF = false`, `IMAGES = 260` images are saved in a folder `RPS`. With `MAKE_IMAGES_FOR_GIF = true`, only the last 6 of those images are saved.
 
 Then to make a movie from a lot of images
 
