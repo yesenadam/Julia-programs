@@ -20,14 +20,17 @@ const IMAGE_WID = 1920
 const IMAGE_HEI = 1080
 const CELL_ARRAY_WID = Int64(IMAGE_WID/CELL_SIZE)
 const CELL_ARRAY_HEI = Int64(IMAGE_HEI/CELL_SIZE)
-initial_cells = rand(0:2, CELL_ARRAY_HEI, CELL_ARRAY_WID)
+initial_cells = rand(0:2, CELL_ARRAY_HEI, CELL_ARRAY_WID) #NB! this is const...
 const NUMBER_OF_IMAGES = 260
 
 #this line does all the work
 save_images(initial_cells,NUMBER_OF_IMAGES)
 
-#NB! This is a bad way of doing it, testing every time that +/-1 wont go over edge. instead just call get_result with good x & y vals.
-#or just use mod(xx,CELL_ARRAY_WID) instead of xx etc. then also dont need to use xx,yy at all, just use a and b.
+function mod1(n,modulus)
+    #given n, returns a number in 1 .. modulus
+    return mod(n-1,modulus)+1
+end
+
 function calculate_winner(x::Int64,y::Int64,cells)
     wins = 0
     losses = 0
@@ -40,40 +43,30 @@ function calculate_winner(x::Int64,y::Int64,cells)
     #write another func that can handle any amount of outsideness....... and with any minx, maxx etc...
     #e.g. if allowed range is 50 to 80, then 85 should be 55? and 45 goes to 75... (i think these are 1 off)
     #that will be a super-useful func. similar to frac()
-    for a in x-1:x+1
-        #i think xx = mod((a-1),CELL_ARRAY_WID)+1 is maybe better here - which is faster?
-        #this 1 indexing seems really bad! (i.e. in Julia) ..how to avoid all the +1 and -1 everywhere?
-        xx = if a > CELL_ARRAY_WID
-            1
-        elseif a < 1
-            CELL_ARRAY_WID::Int
-        end
 
-        for b in y-1:y+1
-            if a == x && b == y #dont do self cell
+    for nabe_x in [mod1(x-1, CELL_ARRAY_WID), x, mod1(x+1, CELL_ARRAY_WID)]
+        for nabe_y in [mod1(y-1, CELL_ARRAY_HEI), y, mod1(y+1, CELL_ARRAY_HEI)] 
+            if nabe_x == x && nabe_y == y #dont do self cell
                 continue
             elseif FOUR_NABES
-                if a != x && b != y # ie not on the horiz-vert axis through cell that 4-nabes are on...
+                if nabe_x != x && nabe_y != y # ie not on the horiz-vert axis through cell that 4-nabes are on...
                     continue
                 end
             end
 
-            yy = if b > CELL_ARRAY_HEI
-                1
-            elseif b < 1
-                CELL_ARRAY_HEI::Int
-            end
-
-            if mod(cells[yy,xx]-1,3) == self # rock loses to neighbouring paper, paper loses to scissors, scissors loses to rock
+            # rock loses to neighbouring paper, paper loses to scissors, scissors loses to rock
+            if mod(cells[nabe_y,nabe_x]-1, 3) == self 
                 losses += 1
-            elseif mod(cells[yy,xx]+1,3) == self # paper beats neighbouring rock, scissors beats paper, rock beats scissors
+            # paper beats neighbouring rock, scissors beats paper, rock beats scissors
+            elseif mod(cells[nabe_y,nabe_x]+1, 3) == self 
                 wins += 1
             end
         end
     end
-
-    return if losses > wins         #e.g. rock can only change to paper, and does so if losses to paper > wins over scissors
-        mod(self+1,3)
+    
+    #e.g. rock can only change to paper, and does so if losses to paper > wins over scissors
+    return if losses > wins         
+        mod(self+1, 3)
     else 
         self
     end
