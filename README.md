@@ -29,5 +29,10 @@ The illusion seems just as strong in greyscale as in colour.
 
 Apparently GIFs work in multiples of 100ths of a second delay between frames. I tried setting framerate to 100 (with `-r 100`) but my browser plays the resulting GIF really slowly. Maybe there's a way of playing them at 100fps.
 
+If you stare at a point of the GIF, the features in your peripheral vision all appear to move around the screen, although they are fixed.
+
+If you look right, it seems you can see waves travelling across the entire screen in NE, SE, SW, NW directions.
+
+
 
 
