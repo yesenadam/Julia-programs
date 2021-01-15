@@ -33,6 +33,8 @@ If you stare at a point of the GIF, the features in your peripheral vision all a
 
 If you look right, it seems you can see waves travelling across the entire screen in NE, SE, SW, NW directions.
 
+The illusion is produced with `FOUR_NABES = false`, which uses a cell's [8 neighbours](https://en.wikipedia.org/wiki/Moore_neighborhood). With `FOUR_NABES = true`, using the [von Neumann neighbourhood](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood), square spirals quickly appear which take over the screen - not so interesting.
 
+Q. What changes of colours, cell size, image rate, make the illusion stronger?
 
 
