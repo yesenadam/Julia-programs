@@ -3,9 +3,9 @@
 ## RocPapSci.jl
 
 ### Description
-Each cell in a [CA](https://en.wikipedia.org/wiki/Cellular_automaton) plays [Rock paper scissors](https://en.wikipedia.org/wiki/Rock_paper_scissors) with its neighbours, at first randomly choosing a strategy. If it's beaten by its neighbours more than it beats them, it adopts their winning strategy next time. Cells are coloured according to strategy in each generation, e.g. (Red, Green, Blue) or (Black, Grey, White). 
+Each cell in a [CA](https://en.wikipedia.org/wiki/Cellular_automaton) plays [Rock paper scissors](https://en.wikipedia.org/wiki/Rock_paper_scissors) with its neighbours, at first randomly choosing a strategy. If it's beaten by its neighbours more than it beats them, it adopts their winning strategy next time. Cells are coloured according to their strategy in each generation, e.g. (rock = red, paper = green, scissors = blue) or (black, grey, white). 
 
-I found that within about 250 generations, a 6-generation repeating loop emerged - the same 2 frames repeated with 3 different colourings. The program saves png images so a movie or GIF can be made. Making a GIF out of the 6-frame loop at 50fps, and moving your head around in front of the image, particularly closer and further away, produces a remarkable illusion of movement, something like sci-fi warp drive effect. 
+I found that within about 200 generations, a 6-generation repeating loop emerges - the same 2 frames repeated with 3 different colourings. The program saves PNG images so a movie or GIF can be made. Making a GIF out of the 6-frame loop at 50fps, and moving your head around in front of the image, particularly closer and further away, produces a remarkable illusion of movement, something like a sci-fi "warp drive" effect. 
 
 ### Usage
 
@@ -23,7 +23,7 @@ or a GIF from 6 images
  
 ### Sample GIFs
 
-View these images full screen for the full effect.
+To get the full effect, click on an image to see it full screen.
 
 #### 30fps, cell size 3
 
